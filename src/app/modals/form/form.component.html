@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="close" size="large" color="danger" (click)="cerrarModal()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-row class="ion-justify-content-center">
+      <div>
+        <h3>{{titulo}}</h3>
+      </div>
+    </ion-row>
+    
+    <form [formGroup]="form" (ngSubmit)="guardar()">
+      <ion-list lines="full">
+        <div class="ion-margin-bottom">
+          <ion-item>
+            <ion-label position="floating">
+              Código
+            </ion-label>
+            <ion-input 
+              type="text"
+              placeholder="Código"  
+              enterkeyhint="next" 
+              maxlength="6"
+              formControlName="codigo">
+          </ion-input>
+          </ion-item>
+          <ng-container *ngIf="validFiel('codigo')">
+            <ion-note color="danger" style="margin-left: 12px;">* El código es requerido</ion-note>
+          </ng-container>
+        </div>
+        
+        <div class="ion-margin-bottom">
+          <ion-item>
+            <ion-label position="floating">
+              Descripción
+            </ion-label>
+            <ion-input 
+              type="text"
+              placeholder="Descripción" 
+              enterkeyhint="next"
+              formControlName="descripcion"
+            ></ion-input>
+          </ion-item>
+          <ng-container *ngIf="validFiel('descripcion')">
+            <ion-note color="danger" style="margin-left: 12px;">* La descripción es requerida</ion-note>
+          </ng-container>
+        </div>
+
+        <div class="ion-margin-bottom">
+          <ion-item>
+            <ion-label position="floating">
+              Stock
+            </ion-label>
+            <ion-input 
+              type="number"
+              placeholder="Stock" 
+              min="0"
+              step="1"
+              (keypress)="($event.charCode >= 48 && $event.charCode < 58)"
+              enterkeyhint="send"
+              formControlName="stock"
+            ></ion-input>
+          </ion-item>
+          <ng-container *ngIf="validFiel('stock')">
+            <ion-note color="danger" style="margin-left: 12px;">* El stock es requerido</ion-note>
+          </ng-container>
+        </div>
+  
+      </ion-list>
+      <div class="ion-margin-top ion-justify-content-center">
+        <ion-button expand="full" color="danger" type="submit" shape="round" [disabled]="form.invalid">{{btnText}}</ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>

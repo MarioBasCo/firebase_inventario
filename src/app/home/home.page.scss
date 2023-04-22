@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+ion-header {
+  ion-toolbar {
+    --background: #f85032;  /* fallback for old browsers */
+    --background: -webkit-linear-gradient(to right, #e73827, #f85032);  /* Chrome 10-25, Safari 5.1-6 */
+    --background: linear-gradient(to right, #e73827, #f85032); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+}
+
+ion-title {
+  font-family: 'Bruno Ace SC', cursive;
+  color: #fff !important;
+}
+
+.titulo {
+  font-family: 'Inter', sans-serif;
+  text-transform: capitalize;
+}

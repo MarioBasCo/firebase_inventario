@@ -1,0 +1,56 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="ion-text-start">
+    <ion-title color="danger">Inventario</ion-title>
+    <ion-progress-bar type="indeterminate" color="warning" *ngIf="!loaded"></ion-progress-bar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-text-center">
+    <h3 class="titulo">
+      <strong>Listado de productos</strong>
+    </h3>
+  </div>
+
+  <ion-note color="medium" class="ion-margin"><ion-icon name="information-circle"></ion-icon> Deslice cada item para ver las opciones</ion-note>
+
+  <ion-list class="ion-margin-top">
+    <ion-list-header>
+      <ion-label color="danger"><b>CÓDIGO</b></ion-label>
+      <ion-label color="danger"><b>DESCRIPCIÓN</b></ion-label>
+      <ion-label color="danger"><b>STOCK</b></ion-label>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let item of data">
+      <ion-item lines="full">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="auto">{{item.codigo}}</ion-col>
+            <ion-col>{{item.descripcion}}</ion-col>
+            <ion-col class="ion-text-end"><ion-badge color="warning">{{item.stock}}</ion-badge></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="transparent">
+          <ion-icon slot="icon-only" color="primary" name="create" (click)="editar(item)"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="transparent" (click)="eliminar(item)">
+          <ion-icon slot="icon-only" color="danger" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="danger" size="small" (click)="openModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <h5 class="ion-margin-start">&copy; Inventario, 2023</h5>
+  </ion-toolbar>
+</ion-footer>
